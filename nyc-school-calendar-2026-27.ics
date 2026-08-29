@@ -7,7 +7,7 @@ X-WR-CALNAME:NYC Public Schools 2026–27
 X-WR-TIMEZONE:America/New_York
 BEGIN:VEVENT
 UID:sep10-sep10-first-day-of-school@nycps.harness
-DTSTAMP:20260829T163411Z
+DTSTAMP:20260829T173739Z
 DTSTART;VALUE=DATE:20260910
 DTEND;VALUE=DATE:20260911
 SUMMARY:First Day of School
@@ -15,7 +15,7 @@ CATEGORIES:Key Dates
 END:VEVENT
 BEGIN:VEVENT
 UID:sep21-sep21-yom-kippur-schools-closed@nycps.harness
-DTSTAMP:20260829T163411Z
+DTSTAMP:20260829T173739Z
 DTSTART;VALUE=DATE:20260921
 DTEND;VALUE=DATE:20260922
 SUMMARY:Yom Kippur — Schools Closed
@@ -24,7 +24,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:sep23-sep23-evening-parent-teacher-conferences-middle-schools-d75@nycps
  .harness
-DTSTAMP:20260829T163411Z
+DTSTAMP:20260829T173739Z
 DTSTART;VALUE=DATE:20260923
 DTEND;VALUE=DATE:20260924
 SUMMARY:Evening Parent-Teacher Conferences: Middle Schools & D75
@@ -34,7 +34,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:sep24-sep24-evening-parent-teacher-conferences-high-schools-k-12-6-12@n
  ycps.harness
-DTSTAMP:20260829T163411Z
+DTSTAMP:20260829T173739Z
 DTSTART;VALUE=DATE:20260924
 DTEND;VALUE=DATE:20260925
 SUMMARY:Evening Parent-Teacher Conferences: High Schools\, K–12\, 6–12
@@ -44,7 +44,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:sep30-sep30-evening-parent-teacher-conferences-elementary-schools-pre-k
  -centers@nycps.harness
-DTSTAMP:20260829T163411Z
+DTSTAMP:20260829T173739Z
 DTSTART;VALUE=DATE:20260930
 DTEND;VALUE=DATE:20261001
 SUMMARY:Evening Parent-Teacher Conferences: Elementary Schools & Pre-K Cent
@@ -55,7 +55,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:oct12-oct12-italian-heritage-indigenous-peoples-day-schools-closed@nycp
  s.harness
-DTSTAMP:20260829T163411Z
+DTSTAMP:20260829T173739Z
 DTSTART;VALUE=DATE:20261012
 DTEND;VALUE=DATE:20261013
 SUMMARY:Italian Heritage/Indigenous Peoples' Day — Schools Closed
@@ -64,7 +64,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:nov03-nov03-election-day-remote-instruction-for-all-students@nycps.harn
  ess
-DTSTAMP:20260829T163411Z
+DTSTAMP:20260829T173739Z
 DTSTART;VALUE=DATE:20261103
 DTEND;VALUE=DATE:20261104
 SUMMARY:Election Day — Remote Instruction for All Students
@@ -73,7 +73,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:nov05-nov05-afternoon-evening-parent-teacher-conferences-elementary-sch
  ools-pre-k-centers@nycps.harness
-DTSTAMP:20260829T163411Z
+DTSTAMP:20260829T173739Z
 DTSTART;VALUE=DATE:20261105
 DTEND;VALUE=DATE:20261106
 SUMMARY:Afternoon & Evening Parent-Teacher Conferences: Elementary Schools 
@@ -84,7 +84,7 @@ CATEGORIES:Parent-Teacher Conferences
 END:VEVENT
 BEGIN:VEVENT
 UID:nov11-nov11-veterans-day-schools-closed@nycps.harness
-DTSTAMP:20260829T163411Z
+DTSTAMP:20260829T173739Z
 DTSTART;VALUE=DATE:20261111
 DTEND;VALUE=DATE:20261112
 SUMMARY:Veterans Day — Schools Closed
@@ -93,7 +93,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:nov12-nov12-afternoon-evening-parent-teacher-conferences-middle-schools
  -d75@nycps.harness
-DTSTAMP:20260829T163411Z
+DTSTAMP:20260829T173739Z
 DTSTART;VALUE=DATE:20261112
 DTEND;VALUE=DATE:20261113
 SUMMARY:Afternoon & Evening Parent-Teacher Conferences: Middle Schools & D7
@@ -105,7 +105,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:nov19-nov19-evening-parent-teacher-conferences-high-schools-k-12-6-12@n
  ycps.harness
-DTSTAMP:20260829T163411Z
+DTSTAMP:20260829T173739Z
 DTSTART;VALUE=DATE:20261119
 DTEND;VALUE=DATE:20261120
 SUMMARY:Evening Parent-Teacher Conferences: High Schools\, K–12\, 6–12
@@ -115,7 +115,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:nov20-nov20-afternoon-parent-teacher-conferences-high-schools-k-12-6-12
  @nycps.harness
-DTSTAMP:20260829T163411Z
+DTSTAMP:20260829T173739Z
 DTSTART;VALUE=DATE:20261120
 DTEND;VALUE=DATE:20261121
 SUMMARY:Afternoon Parent-Teacher Conferences: High Schools\, K–12\, 6–1
@@ -126,7 +126,7 @@ CATEGORIES:Parent-Teacher Conferences
 END:VEVENT
 BEGIN:VEVENT
 UID:nov26-nov27-thanksgiving-recess-schools-closed@nycps.harness
-DTSTAMP:20260829T163411Z
+DTSTAMP:20260829T173739Z
 DTSTART;VALUE=DATE:20261126
 DTEND;VALUE=DATE:20261128
 SUMMARY:Thanksgiving Recess — Schools Closed
@@ -134,7 +134,7 @@ CATEGORIES:Schools Closed
 END:VEVENT
 BEGIN:VEVENT
 UID:dec24-jan01-winter-recess-schools-closed@nycps.harness
-DTSTAMP:20260829T163411Z
+DTSTAMP:20260829T173739Z
 DTSTART;VALUE=DATE:20261224
 DTEND;VALUE=DATE:20270102
 SUMMARY:Winter Recess — Schools Closed
@@ -143,7 +143,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:jan18-jan18-rev-dr-martin-luther-king-jr-day-schools-closed@nycps.harne
  ss
-DTSTAMP:20260829T163411Z
+DTSTAMP:20260829T173739Z
 DTSTART;VALUE=DATE:20270118
 DTEND;VALUE=DATE:20270119
 SUMMARY:Rev. Dr. Martin Luther King Jr. Day — Schools Closed
@@ -151,7 +151,7 @@ CATEGORIES:Schools Closed
 END:VEVENT
 BEGIN:VEVENT
 UID:jan26-jan29-regents-administration@nycps.harness
-DTSTAMP:20260829T163411Z
+DTSTAMP:20260829T173739Z
 DTSTART;VALUE=DATE:20270126
 DTEND;VALUE=DATE:20270130
 SUMMARY:Regents Administration
@@ -159,7 +159,7 @@ CATEGORIES:Regents
 END:VEVENT
 BEGIN:VEVENT
 UID:feb01-feb01-professional-development-day@nycps.harness
-DTSTAMP:20260829T163411Z
+DTSTAMP:20260829T173739Z
 DTSTART;VALUE=DATE:20270201
 DTEND;VALUE=DATE:20270202
 SUMMARY:Professional Development Day
@@ -169,7 +169,7 @@ CATEGORIES:Key Dates
 END:VEVENT
 BEGIN:VEVENT
 UID:feb02-feb02-spring-semester-begins@nycps.harness
-DTSTAMP:20260829T163411Z
+DTSTAMP:20260829T173739Z
 DTSTART;VALUE=DATE:20270202
 DTEND;VALUE=DATE:20270203
 SUMMARY:Spring Semester Begins
@@ -177,7 +177,7 @@ CATEGORIES:Key Dates
 END:VEVENT
 BEGIN:VEVENT
 UID:feb15-feb19-midwinter-recess-schools-closed@nycps.harness
-DTSTAMP:20260829T163411Z
+DTSTAMP:20260829T173739Z
 DTSTART;VALUE=DATE:20270215
 DTEND;VALUE=DATE:20270220
 SUMMARY:Midwinter Recess — Schools Closed
@@ -186,7 +186,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:mar03-mar03-afternoon-evening-parent-teacher-conferences-elementary-sch
  ools-pre-k-centers@nycps.harness
-DTSTAMP:20260829T163411Z
+DTSTAMP:20260829T173739Z
 DTSTART;VALUE=DATE:20270303
 DTEND;VALUE=DATE:20270304
 SUMMARY:Afternoon & Evening Parent-Teacher Conferences: Elementary Schools 
@@ -198,7 +198,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:mar04-mar04-afternoon-evening-parent-teacher-conferences-middle-schools
  -d75@nycps.harness
-DTSTAMP:20260829T163411Z
+DTSTAMP:20260829T173739Z
 DTSTART;VALUE=DATE:20270304
 DTEND;VALUE=DATE:20270305
 SUMMARY:Afternoon & Evening Parent-Teacher Conferences: Middle Schools & D7
@@ -209,7 +209,7 @@ CATEGORIES:Parent-Teacher Conferences
 END:VEVENT
 BEGIN:VEVENT
 UID:mar09-mar09-eid-al-fitr-schools-closed@nycps.harness
-DTSTAMP:20260829T163411Z
+DTSTAMP:20260829T173739Z
 DTSTART;VALUE=DATE:20270309
 DTEND;VALUE=DATE:20270310
 SUMMARY:Eid al-Fitr — Schools Closed
@@ -218,7 +218,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:mar18-mar18-evening-parent-teacher-conferences-high-schools-k-12-6-12@n
  ycps.harness
-DTSTAMP:20260829T163411Z
+DTSTAMP:20260829T173739Z
 DTSTART;VALUE=DATE:20270318
 DTEND;VALUE=DATE:20270319
 SUMMARY:Evening Parent-Teacher Conferences: High Schools\, K–12\, 6–12
@@ -228,7 +228,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:mar19-mar19-afternoon-parent-teacher-conferences-high-schools-k-12-6-12
  @nycps.harness
-DTSTAMP:20260829T163411Z
+DTSTAMP:20260829T173739Z
 DTSTART;VALUE=DATE:20270319
 DTEND;VALUE=DATE:20270320
 SUMMARY:Afternoon Parent-Teacher Conferences: High Schools\, K–12\, 6–1
@@ -239,7 +239,7 @@ CATEGORIES:Parent-Teacher Conferences
 END:VEVENT
 BEGIN:VEVENT
 UID:mar26-mar26-good-friday-schools-closed@nycps.harness
-DTSTAMP:20260829T163411Z
+DTSTAMP:20260829T173739Z
 DTSTART;VALUE=DATE:20270326
 DTEND;VALUE=DATE:20270327
 SUMMARY:Good Friday — Schools Closed
@@ -247,7 +247,7 @@ CATEGORIES:Schools Closed
 END:VEVENT
 BEGIN:VEVENT
 UID:apr22-apr30-spring-recess-schools-closed@nycps.harness
-DTSTAMP:20260829T163411Z
+DTSTAMP:20260829T173739Z
 DTSTART;VALUE=DATE:20270422
 DTEND;VALUE=DATE:20270501
 SUMMARY:Spring Recess — Schools Closed
@@ -256,7 +256,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:may12-may12-evening-parent-teacher-conferences-high-schools-k-12-6-12@n
  ycps.harness
-DTSTAMP:20260829T163411Z
+DTSTAMP:20260829T173739Z
 DTSTART;VALUE=DATE:20270512
 DTEND;VALUE=DATE:20270513
 SUMMARY:Evening Parent-Teacher Conferences: High Schools\, K–12\, 6–12
@@ -266,7 +266,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:may13-may13-evening-parent-teacher-conferences-middle-schools-d75@nycps
  .harness
-DTSTAMP:20260829T163411Z
+DTSTAMP:20260829T173739Z
 DTSTART;VALUE=DATE:20270513
 DTEND;VALUE=DATE:20270514
 SUMMARY:Evening Parent-Teacher Conferences: Middle Schools & D75
@@ -275,7 +275,7 @@ CATEGORIES:Parent-Teacher Conferences
 END:VEVENT
 BEGIN:VEVENT
 UID:may17-may17-eid-al-adha-schools-closed@nycps.harness
-DTSTAMP:20260829T163411Z
+DTSTAMP:20260829T173739Z
 DTSTART;VALUE=DATE:20270517
 DTEND;VALUE=DATE:20270518
 SUMMARY:Eid al-Adha — Schools Closed
@@ -284,7 +284,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:may26-may26-evening-parent-teacher-conferences-elementary-schools-pre-k
  -centers@nycps.harness
-DTSTAMP:20260829T163411Z
+DTSTAMP:20260829T173739Z
 DTSTART;VALUE=DATE:20270526
 DTEND;VALUE=DATE:20270527
 SUMMARY:Evening Parent-Teacher Conferences: Elementary Schools & Pre-K Cent
@@ -294,7 +294,7 @@ CATEGORIES:Parent-Teacher Conferences
 END:VEVENT
 BEGIN:VEVENT
 UID:may31-may31-memorial-day-schools-closed@nycps.harness
-DTSTAMP:20260829T163411Z
+DTSTAMP:20260829T173739Z
 DTSTART;VALUE=DATE:20270531
 DTEND;VALUE=DATE:20270601
 SUMMARY:Memorial Day — Schools Closed
@@ -302,7 +302,7 @@ CATEGORIES:Schools Closed
 END:VEVENT
 BEGIN:VEVENT
 UID:jun08-jun08-clerical-day@nycps.harness
-DTSTAMP:20260829T163411Z
+DTSTAMP:20260829T173739Z
 DTSTART;VALUE=DATE:20270608
 DTEND;VALUE=DATE:20270609
 SUMMARY:Clerical Day
@@ -312,16 +312,16 @@ CATEGORIES:Key Dates
 END:VEVENT
 BEGIN:VEVENT
 UID:jun10-jun10-anniversary-day-chancellor-s-conference-day@nycps.harness
-DTSTAMP:20260829T163411Z
+DTSTAMP:20260829T173739Z
 DTSTART;VALUE=DATE:20270610
 DTEND;VALUE=DATE:20270611
-SUMMARY:Anniversary Day / Chancellor's Conference Day
+SUMMARY:Anniversary Day/Chancellor's Conference Day
 DESCRIPTION:Students do not attend school.
 CATEGORIES:Key Dates
 END:VEVENT
 BEGIN:VEVENT
 UID:jun15-jun18-regents-administration@nycps.harness
-DTSTAMP:20260829T163411Z
+DTSTAMP:20260829T173739Z
 DTSTART;VALUE=DATE:20270615
 DTEND;VALUE=DATE:20270619
 SUMMARY:Regents Administration
@@ -329,7 +329,7 @@ CATEGORIES:Regents
 END:VEVENT
 BEGIN:VEVENT
 UID:jun21-jun25-regents-administration@nycps.harness
-DTSTAMP:20260829T163411Z
+DTSTAMP:20260829T173739Z
 DTSTART;VALUE=DATE:20270621
 DTEND;VALUE=DATE:20270626
 SUMMARY:Regents Administration
@@ -337,7 +337,7 @@ CATEGORIES:Regents
 END:VEVENT
 BEGIN:VEVENT
 UID:jun28-jun28-last-day-of-school-for-students@nycps.harness
-DTSTAMP:20260829T163411Z
+DTSTAMP:20260829T173739Z
 DTSTART;VALUE=DATE:20270628
 DTEND;VALUE=DATE:20270629
 SUMMARY:Last Day of School for Students

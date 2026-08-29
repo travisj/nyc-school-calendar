@@ -82,7 +82,7 @@ EVENTS = [
     E(2027, 5, 26, 2027, 5, 26, ("Wed", "Wed"), "Evening Parent-Teacher Conferences: Elementary Schools & Pre-K Centers", PTC, PTC_NOTE),
     E(2027, 5, 31, 2027, 5, 31, ("Mon", "Mon"), "Memorial Day — Schools Closed", SCHOOLS_CLOSED),
     E(2027, 6, 8, 2027, 6, 8, ("Tue", "Tue"), "Clerical Day", KEY_DATES, "No classes for students attending 3-K, Pre-K, elementary schools, middle schools, K–12 schools, and standalone D75 programs."),
-    E(2027, 6, 10, 2027, 6, 10, ("Thu", "Thu"), "Anniversary Day / Chancellor's Conference Day", KEY_DATES, "Students do not attend school."),
+    E(2027, 6, 10, 2027, 6, 10, ("Thu", "Thu"), "Anniversary Day/Chancellor's Conference Day", KEY_DATES, "Students do not attend school."),
     E(2027, 6, 15, 2027, 6, 18, ("Tue", "Fri"), "Regents Administration", REGENTS),
     E(2027, 6, 21, 2027, 6, 25, ("Mon", "Fri"), "Regents Administration", REGENTS),
     E(2027, 6, 28, 2027, 6, 28, ("Mon", "Mon"), "Last Day of School for Students", KEY_DATES),
