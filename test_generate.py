@@ -96,10 +96,30 @@ class TestIcs(unittest.TestCase):
         )
 
     def test_uids_stable_and_unique(self):
-        uids = [l for l in self.ics.split("\r\n") if l.startswith("UID:")]
-        self.assertEqual(len(uids), len(set(uids)))
+        full_uids = [
+            line[len("UID:"):]
+            for line in self.unfolded.split("\n")
+            if line.startswith("UID:")
+        ]
+        self.assertEqual(len(full_uids), 36)
+        self.assertEqual(len(full_uids), len(set(full_uids)))
+        # Determinism — same now gives same full ICS
         self.assertEqual(
             emit_ics(EVENTS, datetime(2026, 8, 29, 12, 0, 0)), self.ics
         )
+        # UID is independent of `now`
+        other = emit_ics(EVENTS, datetime(2027, 1, 1))
+        other_lines: list[str] = []
+        for line in other.replace("\r\n", "\n").split("\n"):
+            if line.startswith(" ") and other_lines:
+                other_lines[-1] += line[1:]
+            else:
+                other_lines.append(line)
+        other_uids = [
+            line[len("UID:"):]
+            for line in other_lines
+            if line.startswith("UID:")
+        ]
+        self.assertEqual(set(other_uids), set(full_uids))
 if __name__ == "__main__":
     unittest.main()
