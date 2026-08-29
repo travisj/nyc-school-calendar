@@ -113,3 +113,62 @@ def validate(events: list[Event]) -> None:
     )
     assert by_summary["Thanksgiving Recess — Schools Closed"].weekdays == ("Thu", "Fri")
     assert events[-1].end == max(ev.end for ev in events)
+
+
+def _escape(text: str) -> str:
+    return (
+        text.replace("\\", "\\\\")
+        .replace(";", "\\;")
+        .replace(",", "\\,")
+        .replace("\n", "\\n")
+    )
+
+
+def _fold(line: str) -> list[str]:
+    """RFC 5545 §3.1 folding: content lines are at most 75 octets, UTF-8 aware."""
+    folded: list[str] = []
+    cur = ""
+    for ch in line:
+        if len((cur + ch).encode("utf-8")) > 75:
+            folded.append(cur)
+            cur = " " + ch
+        else:
+            cur += ch
+    folded.append(cur)
+    return folded
+
+
+def _slug(ev: Event) -> str:
+    text = f"{ev.start:%b%d}-{ev.end:%b%d}-{ev.summary}".lower()
+    parts = "".join(c if c.isalnum() else "-" for c in text).split("-")
+    return "-".join(p for p in parts if p)
+
+
+def emit_ics(events: list[Event], now: datetime) -> str:
+    lines = [
+        "BEGIN:VCALENDAR",
+        "VERSION:2.0",
+        "PRODID:-//nyc-school-calendar//NYCPS 2026-27//EN",
+        "CALSCALE:GREGORIAN",
+        "METHOD:PUBLISH",
+        "X-WR-CALNAME:NYC Public Schools 2026–27",
+        "X-WR-TIMEZONE:America/New_York",
+    ]
+    stamp = now.astimezone(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    for ev in events:
+        lines += [
+            "BEGIN:VEVENT",
+            f"UID:{_slug(ev)}@nycps.harness",
+            f"DTSTAMP:{stamp}",
+            f"DTSTART;VALUE=DATE:{ev.start:%Y%m%d}",
+            f"DTEND;VALUE=DATE:{ev.end + timedelta(days=1):%Y%m%d}",
+            f"SUMMARY:{_escape(ev.summary)}",
+        ]
+        if ev.description:
+            lines.append(f"DESCRIPTION:{_escape(ev.description)}")
+        lines += [f"CATEGORIES:{_escape(ev.category)}", "END:VEVENT"]
+    lines.append("END:VCALENDAR")
+    out: list[str] = []
+    for line in lines:
+        out.extend(_fold(line))
+    return "\r\n".join(out) + "\r\n"
