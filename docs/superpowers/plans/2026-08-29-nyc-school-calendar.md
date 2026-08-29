@@ -272,7 +272,12 @@ class TestIcs(unittest.TestCase):
     def test_36_events_with_required_fields(self):
         self.assertEqual(self.ics.count("BEGIN:VEVENT"), 36)
         self.assertEqual(self.ics.count("END:VEVENT"), 36)
-        for line in self.ics.split("\r\n"):
+        # Walk logical (unfolded) lines — RFC 5545 §3.1 splits any line over
+        # 75 octets into a continuation starting with a space. Most UIDs
+        # (slug + "@nycps.harness") exceed 75 octets and would otherwise
+        # have their tail on a physical continuation line starting with " ",
+        # not "UID:". self.unfolded was built in setUp via _unfold().
+        for line in self.unfolded.split("\n"):
             if line.startswith("UID:"):
                 self.assertRegex(line, r"UID:.+@nycps\.harness")
             if line.startswith("DTSTART"):
@@ -453,7 +458,6 @@ CAT_SLUGS = {
     REGENTS: "regents",
     KEY_DATES: "key-dates",
 }
-CAT_COLORS = {
     SCHOOLS_CLOSED: "#b91c1c",
     PTC: "#1d4ed8",
     REGENTS: "#6d28d9",
