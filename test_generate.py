@@ -4,7 +4,7 @@ from datetime import date, datetime
 
 from generate import (
     CATEGORIES, CAT_SLUGS, EVENTS, KEY_DATES, PTC, REGENTS, SOURCE_PDF,
-    SCHOOLS_CLOSED, emit_ics, emit_html, validate,
+    SCHOOLS_CLOSED, emit_ics, emit_html, main, validate,
 )
 
 
@@ -154,5 +154,27 @@ class TestHtml(unittest.TestCase):
     def test_download_and_source_links(self):
         self.assertIn('href="nyc-school-calendar-2026-27.ics"', self.html)
         self.assertIn(SOURCE_PDF, self.html)
+
+
+class TestMain(unittest.TestCase):
+    def test_main_writes_artifacts(self):
+        from pathlib import Path
+        from tempfile import TemporaryDirectory
+        import generate as gen
+        with TemporaryDirectory() as tmp:
+            ics_path = Path(tmp) / "out.ics"
+            html_path = Path(tmp) / "out.html"
+            old_ics, old_html = gen.ICS_PATH, gen.HTML_PATH
+            gen.ICS_PATH = ics_path
+            gen.HTML_PATH = html_path
+            try:
+                gen.main()
+            finally:
+                gen.ICS_PATH, gen.HTML_PATH = old_ics, old_html
+            raw = ics_path.read_bytes()
+            self.assertTrue(raw.endswith(b"\r\n"))
+            self.assertIn(b"BEGIN:VCALENDAR", raw)
+            text = html_path.read_text(encoding="utf-8")
+            self.assertIn("June 2027", text)
 if __name__ == "__main__":
-    unittest.main()
+     unittest.main()

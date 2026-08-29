@@ -294,3 +294,15 @@ def emit_html(events: list[Event]) -> str:
         parts.append("</tbody></table></section>")
     parts.append(HTML_TAIL)
     return "".join(parts)
+
+
+def main() -> None:
+    validate(EVENTS)
+    now = datetime.now(timezone.utc)
+    ICS_PATH.write_bytes(emit_ics(EVENTS, now).encode("utf-8"))
+    HTML_PATH.write_text(emit_html(EVENTS), encoding="utf-8")
+    print(f"wrote {ICS_PATH} and {HTML_PATH} ({len(EVENTS)} events)")
+
+
+if __name__ == "__main__":
+    main()
