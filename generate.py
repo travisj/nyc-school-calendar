@@ -11,6 +11,7 @@ from __future__ import annotations
 import calendar as cal_mod
 from dataclasses import dataclass
 from datetime import date, datetime, timedelta, timezone
+from html import escape as html_escape
 from pathlib import Path
 
 ICS_PATH = Path("nyc-school-calendar-2026-27.ics")
@@ -172,3 +173,124 @@ def emit_ics(events: list[Event], now: datetime) -> str:
     for line in lines:
         out.extend(_fold(line))
     return "\r\n".join(out) + "\r\n"
+
+CAT_SLUGS = {
+    SCHOOLS_CLOSED: "schools-closed",
+    PTC: "ptc",
+    REGENTS: "regents",
+    KEY_DATES: "key-dates",
+}
+CAT_COLORS = {
+    SCHOOLS_CLOSED: "#b91c1c",
+    PTC: "#1d4ed8",
+    REGENTS: "#6d28d9",
+    KEY_DATES: "#047857",
+}
+DAY_NAMES = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+
+HTML_HEAD = """<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NYC Public Schools 2026–27 Calendar</title>
+<style>
+:root { --closed:#b91c1c; --ptc:#1d4ed8; --regents:#6d28d9; --key:#047857; }
+body { font-family:-apple-system,"Segoe UI",sans-serif; margin:1.5rem; color:#111; background:#fafafa; }
+header h1 { font-size:1.4rem; margin:0 0 .25rem; }
+header p { margin:.1rem 0 .6rem; font-size:.85rem; }
+.legend { display:flex; flex-wrap:wrap; gap:1rem; margin:.4rem 0 1.25rem; }
+.legend-item { display:flex; align-items:center; gap:.35rem; cursor:pointer; font-size:.85rem; }
+.dot { width:.8rem; height:.8rem; border-radius:50%; display:inline-block; }
+.months { display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:1.25rem; }
+.month { background:#fff; border:1px solid #e5e7eb; border-radius:8px; padding:.75rem; }
+.month h2 { font-size:1rem; margin:.1rem 0 .5rem; }
+table { width:100%; border-collapse:collapse; table-layout:fixed; }
+th { font-size:.65rem; color:#6b7280; padding:.15rem 0; }
+td { height:52px; vertical-align:top; border:1px solid #f3f4f6; padding:1px 2px; }
+td.pad { background:#fafafa; }
+.daynum { font-size:.62rem; color:#9ca3af; display:block; }
+.ev { display:block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+      border-radius:3px; padding:0 2px; margin-top:1px; color:#fff; font-size:.6rem; }
+.cat-schools-closed { background:var(--closed); }
+.cat-ptc { background:var(--ptc); }
+.cat-regents { background:var(--regents); }
+.cat-key-dates { background:var(--key); }
+.hide-schools-closed .cat-schools-closed, .hide-ptc .cat-ptc,
+.hide-regents .cat-regents, .hide-key-dates .cat-key-dates { display:none; }
+footer { margin-top:1.5rem; }
+footer p { color:#6b7280; font-size:.75rem; }
+</style>
+</head>
+<body>
+"""
+
+HTML_TAIL = """</main>
+<footer><p>All events all-day per the official NYCPS calendar; individual schools' Parent-Teacher Conference dates may differ.</p></footer>
+<script>
+document.querySelectorAll('.cat-toggle').forEach(function (cb) {
+  cb.addEventListener('change', function () {
+    document.body.classList.toggle('hide-' + cb.value, !cb.checked);
+  });
+});
+</script>
+</body>
+</html>
+"""
+
+
+def emit_html(events: list[Event]) -> str:
+    by_date: dict[date, list[Event]] = {}
+    for ev in events:
+        d = ev.start
+        while d <= ev.end:
+            by_date.setdefault(d, []).append(ev)
+            d += timedelta(days=1)
+
+    months: list[tuple[int, int]] = []
+    year, month = 2026, 9
+    while (year, month) <= (2027, 6):
+        months.append((year, month))
+        year, month = (year + 1, 1) if month == 12 else (year, month + 1)
+
+    parts: list[str] = [HTML_HEAD]
+    parts.append(
+        "<header><h1>NYC Public Schools — 2026–27 Calendar</h1>"
+        f'<p><a href="{ICS_PATH.name}" download>Download .ics</a> · '
+        f'<a href="{SOURCE_PDF}">Source PDF (schools.nyc.gov)</a></p>'
+        '<div class="legend">'
+    )
+    for cat in CATEGORIES:
+        parts.append(
+            f'<label class="legend-item"><input type="checkbox" class="cat-toggle" '
+            f'value="{CAT_SLUGS[cat]}" checked> '
+            f'<span class="dot" style="background:{CAT_COLORS[cat]}"></span>'
+            f"{html_escape(cat)}</label>"
+        )
+    parts.append("</div></header><main class=\"months\">")
+    for year, month in months:
+        title = f"{cal_mod.month_name[month]} {year}"
+        parts.append(f'<section class="month"><h2>{title}</h2><table><thead><tr>')
+        for dn in DAY_NAMES:
+            parts.append(f"<th>{dn}</th>")
+        parts.append("</tr></thead><tbody>")
+        weeks = cal_mod.Calendar(firstweekday=6).monthdayscalendar(year, month)
+        for week in weeks:
+            parts.append("<tr>")
+            for day in week:
+                if day == 0:
+                    parts.append('<td class="pad"></td>')
+                    continue
+                evs = by_date.get(date(year, month, day), [])
+                badges = "".join(
+                    f'<span class="ev cat-{CAT_SLUGS[ev.category]}" '
+                    f'title="{html_escape(ev.summary)}">{html_escape(ev.summary)}</span>'
+                    for ev in evs
+                )
+                parts.append(
+                    f'<td><span class="daynum">{day}</span>{badges}</td>'
+                )
+            parts.append("</tr>")
+        parts.append("</tbody></table></section>")
+    parts.append(HTML_TAIL)
+    return "".join(parts)

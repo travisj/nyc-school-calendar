@@ -1,7 +1,11 @@
 import unittest
+import html as html_mod
 from datetime import date, datetime
 
-from generate import CATEGORIES, EVENTS, KEY_DATES, PTC, REGENTS, SCHOOLS_CLOSED, emit_ics, validate
+from generate import (
+    CATEGORIES, CAT_SLUGS, EVENTS, KEY_DATES, PTC, REGENTS, SOURCE_PDF,
+    SCHOOLS_CLOSED, emit_ics, emit_html, validate,
+)
 
 
 class TestData(unittest.TestCase):
@@ -121,5 +125,34 @@ class TestIcs(unittest.TestCase):
             if line.startswith("UID:")
         ]
         self.assertEqual(set(other_uids), set(full_uids))
+
+
+class TestHtml(unittest.TestCase):
+    def setUp(self):
+        self.html = emit_html(EVENTS)
+
+    def test_all_ten_months_rendered(self):
+        for label in [
+            "September 2026", "October 2026", "November 2026", "December 2026",
+            "January 2027", "February 2027", "March 2027", "April 2027",
+            "May 2027", "June 2027",
+        ]:
+            self.assertIn(label, self.html)
+
+    def test_every_event_appears(self):
+        for ev in EVENTS:
+            self.assertIn(html_mod.escape(ev.summary), self.html)
+
+    def test_legend_lists_all_categories_with_toggles(self):
+        for cat in CATEGORIES:
+            self.assertIn(cat, self.html)
+            slug = CAT_SLUGS[cat]
+            self.assertIn(f'value="{slug}"', self.html)
+            self.assertIn(f"cat-{slug}", self.html)
+        self.assertIn("cat-toggle", self.html)
+
+    def test_download_and_source_links(self):
+        self.assertIn('href="nyc-school-calendar-2026-27.ics"', self.html)
+        self.assertIn(SOURCE_PDF, self.html)
 if __name__ == "__main__":
     unittest.main()
